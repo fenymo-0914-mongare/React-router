@@ -8,7 +8,8 @@ const Navbar = () => {
   return (
     <nav className='bg-gray-950 flex items-center justify-center text-yellow-400 p-4 flex gap-5 space-x-4'>
       <NavLink className={activeClass} to='/'>Home</NavLink>
-      <NavLink className={activeClass} to='/about'>About</NavLink> 
+      <NavLink className={activeClass} to='/about'>About</NavLink>
+        <NavLink className={activeClass} to='/sign-up'>Sign Up</NavLink> 
     </nav>
   )
 }
