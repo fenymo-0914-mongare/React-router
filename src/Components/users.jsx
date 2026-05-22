@@ -1,7 +1,16 @@
-import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, Outlet, useSearchParams } from 'react-router-dom'
+import { useAtom } from 'jotai'
+import { searchParamAtom } from '../States/JSAtoms.js'
 
 const Users = () => {
+        const [searchParam, setSearchParam] = useAtom(searchParamAtom)
+        const [searchParams, setSearchParams] = useSearchParams()
+
+        useEffect(() => {
+            const obj = Object.fromEntries(searchParams.entries())
+            setSearchParam(obj)
+        }, [searchParams, setSearchParam])
   return (
     <section className='flex flex-col items-center my-2 text-white bg-orange-50 h-screen px-4 rounded-md mx-4 gap-4'>
       <h1 className='text-3xl font-bold text-center my-4'>Users Page</h1>
@@ -45,8 +54,15 @@ const Users = () => {
                 <p className='text-center text-amber-600'>This is the details for User 6.</p>
             </div>
         </div>
-
         <Outlet />
+        <div className="flex justify-center gap-3 my-4">
+            <button onClick={() => { const obj = { filter: 'active' }; setSearchParams(obj); setSearchParam(obj); }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Active
+            </button>
+            <button onClick={() => { setSearchParams({}); setSearchParam({}); }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Passive
+            </button>
+        </div>
     </section>
   )
 }
