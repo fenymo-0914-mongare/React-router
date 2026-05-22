@@ -6,6 +6,8 @@ import Navbar from './Components/Navbar.jsx'
 import SignUpForm from './Components/signUpForm.jsx'
 import Confirmed from './Components/confirmed.jsx'
 import PageError from './Components/pageError.jsx'
+import Products from './Components/products.jsx'
+import Features from './Components/features.jsx'
 
 const App = () => {
   return (
@@ -17,6 +19,9 @@ const App = () => {
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/confirmed' element={<Confirmed />} />
         <Route path='*' element={<PageError />} />
+        <Route path='/products' element={<Products />}>
+          <Route path='features' element={<Features />} />
+        </Route>
       </Routes> 
     </div>
   )
