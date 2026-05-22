@@ -8,6 +8,8 @@ import Confirmed from './Components/confirmed.jsx'
 import PageError from './Components/pageError.jsx'
 import Products from './Components/products.jsx'
 import Features from './Components/features.jsx'
+import Users from './Components/users.jsx'
+import UserDetails from './Components/userDetails.jsx'
 
 const App = () => {
   return (
@@ -21,6 +23,9 @@ const App = () => {
         <Route path='*' element={<PageError />} />
         <Route path='/products' element={<Products />}>
           <Route path='features' element={<Features />} />
+        </Route>
+        <Route path='/users' element={<Users />} >
+          <Route path=':id' element={<UserDetails />} />
         </Route>
       </Routes> 
     </div>
